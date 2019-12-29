@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedService", "TimedService\TimedService.csproj", "{D86C8B48-02DA-4967-8DAC-A674A102D2B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexio.TimedService", "Hexio.TimedService\Hexio.TimedService.csproj", "{D86C8B48-02DA-4967-8DAC-A674A102D2B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

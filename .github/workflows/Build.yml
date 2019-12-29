@@ -1,0 +1,23 @@
+  
+name: Build
+
+on:
+  push:
+  
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.100' 
+
+      - name: Checkout repository
+        uses: actions/checkout@master  
+        
+      - name: Restore
+        run: dotnet restore  
+        
+      - name: Build
+        run: dotnet build -c Release --no-restore

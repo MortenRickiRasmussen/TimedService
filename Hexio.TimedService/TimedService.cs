@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace TimedService
+namespace Hexio.TimedService
 {
     public static class AutofacExtensions
     {
@@ -41,7 +41,7 @@ namespace TimedService
 
         protected override async Task ExecuteAsync(CancellationToken token)
         {
-            Log.Information("Starting timed service {TimedService}", typeof(T).Name);
+            Log.Information("Starting timed service {Hexio.TimedService}", typeof(T).Name);
 
             while (!token.IsCancellationRequested)
             {
@@ -59,7 +59,7 @@ namespace TimedService
                     }
                     catch (Exception ex)
                     {
-                        Log.Error(ex, "Failed during execution of timed service {TimedService}", typeof(T).Name);
+                        Log.Error(ex, "Failed during execution of timed service {Hexio.TimedService}", typeof(T).Name);
                     }
                 }
                 await Task.Delay(_interval, token);
@@ -68,7 +68,7 @@ namespace TimedService
         
         public override Task StopAsync(CancellationToken cancellationToken)
         {
-            Log.Information("Stopping timed service {TimedService}", typeof(T).Name);
+            Log.Information("Stopping timed service {Hexio.TimedService}", typeof(T).Name);
 
             return Task.CompletedTask;
         }
