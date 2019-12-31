@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
@@ -41,7 +42,7 @@ namespace Hexio.TimedService
 
         protected override async Task ExecuteAsync(CancellationToken token)
         {
-            Log.Information("Starting timed service {TimedService}", typeof(T).Name);
+            Log.Information("Timed service {TimedService} registered", typeof(T).Name);
 
             while (!token.IsCancellationRequested)
             {
@@ -53,8 +54,16 @@ namespace Hexio.TimedService
 
                     try
                     {
+                        Log.Information("{TimedService} started running", typeof(T).Name);
+
+                        Stopwatch watch = Stopwatch.StartNew();
+                        
                         await service.Execute();
                         
+                        watch.Stop();
+                        
+                        Log.Information("{TimedService} finished execution in {Elapsed} ms", typeof(T).Name, watch.ElapsedMilliseconds);
+
                         _interval = service.Interval;
                     }
                     catch (Exception ex)
